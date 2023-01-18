@@ -1,5 +1,6 @@
+//refactoring.guru/es/design-patterns/builder
 import fs from "fs";
-
+//El patrón Builder sugiere que saques el código de construcción del objeto de su propia clase y lo coloques dentro de objetos independientes llamados constructores.
 interface IFileReader {
   isJSONFile(filePath: string): boolean;
   readTextFile(filePath: string): string;
@@ -14,9 +15,13 @@ class DirectoryScraper {
       .readdirSync(this.dirPath)
       .reduce<Record<string, unknown>>((acc, fileName) => {
         if (this.reader.isJSONFile(fileName)) {
-          acc[fileName] = this.reader.readJSONFile(`${this.dirPath}/${fileName}`);
+          acc[fileName] = this.reader.readJSONFile(
+            `${this.dirPath}/${fileName}`
+          );
         } else {
-          acc[fileName] = this.reader.readTextFile(`${this.dirPath}/${fileName}`);
+          acc[fileName] = this.reader.readTextFile(
+            `${this.dirPath}/${fileName}`
+          );
         }
         return acc;
       }, {});
