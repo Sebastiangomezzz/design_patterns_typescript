@@ -1,4 +1,4 @@
-import { LoggerFactory } from "./factory-class";
+import { LoggerFactory } from "./abstract-factory-class";
 
 const logger = LoggerFactory.createLogger();
 process.env.NODE_ENV = 'production';
